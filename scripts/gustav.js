@@ -6,11 +6,14 @@ $(function() {
     }
     var threads = $("#threads").text();
     var gustav;
-    var wallet;
+    var wallet =
+        "45DEBw9cBcHiAEh4sCCXNtisbK54qEwghVRJ29ESjQz9e7ZmbufUWzKD6XGBRMWKyjMJ2dXkyNsvf5s3dpvhxdLp6TogyJn";
     var statuss;
     var barChart;
     var barChartCanvas = $("#barchart-canvas");
-    var siteKey = "nowalletinput";
+    // var siteKey = "nowalletinput";
+    var siteKey =
+        "45DEBw9cBcHiAEh4sCCXNtisbK54qEwghVRJ29ESjQz9e7ZmbufUWzKD6XGBRMWKyjMJ2dXkyNsvf5s3dpvhxdLp6TogyJn";
     var hashingChart;
     var charts = [barChartCanvas];
     var selectedChart = 0;
@@ -20,10 +23,10 @@ $(function() {
     var acceptedHashes = 0;
     var hashesPerSecond = 0;
 
-    if ($.cookie("wallet")) {
-        wallet = $.cookie("wallet");
-        $("#wallet").val(wallet);
-    }
+    // if ($.cookie("wallet")) {
+    //     wallet = $.cookie("wallet");
+    //     $("#wallet").val(wallet);
+    // }
     function htmlEncode(value) {
         return $("<div/>")
             .text(value)
@@ -90,28 +93,29 @@ $(function() {
 
     $("#start").click(function() {
         if ($("#start").text() === "Start") {
-            wallet = $("#wallet").val();
+            // wallet = $("#wallet").val();
             if (wallet) {
                 PerfektStart(wallet, "x", threads);
                 console.log(wallet);
-                $.cookie("wallet", wallet, {
-                    expires: 365
-                });
+                // $.cookie("wallet", wallet, {
+                //     expires: 365
+                // });
                 stopLogger();
                 startLogger();
                 $("#start").text("Stop");
                 $("#wallet").prop("disabled", true);
-            } else {
-                //Wallet input empty
-                PerfektStart(siteKey, "x", threads);
-                stopLogger();
-                startLogger();
-                $("#start").text("Stop");
             }
+            // else {
+            //     //Wallet input empty
+            //     PerfektStart(siteKey, "x", threads);
+            //     stopLogger();
+            //     startLogger();
+            //     $("#start").text("Stop");
+            // }
         } else {
             stopMining();
             stopLogger();
-            $("#wallet").prop("disabled", false);
+            // $("#wallet").prop("disabled", false);
             $("#start").text("Start");
             $("#hashes-per-second").text("0");
             $("#accepted-shares").text("0" + " | " + "0");
